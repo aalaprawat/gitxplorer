@@ -33,10 +33,9 @@ class RepoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[RepoViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[RepoViewModel::class.java]
         pull_request_recyclerView.layoutManager = LinearLayoutManager(context)
         pull_request_recyclerView.adapter = adapterRepoRequest
-
         repoName = arguments?.getString("RepoName")
         branches_title.text = "Open Pull Request"
         viewModel.getPullRequest(repoName ?: "", "open")

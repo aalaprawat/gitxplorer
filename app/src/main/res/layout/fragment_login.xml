@@ -28,8 +28,9 @@
             android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:backgroundTint="@color/backgroundlight"
-            android:ellipsize="end"
             android:hint="@string/enter_your_github_id"
+            android:imeOptions="actionGo"
+            android:inputType="text"
             android:maxLines="1"
             android:textColor="@android:color/darker_gray"
             android:textColorHint="@android:color/darker_gray" />

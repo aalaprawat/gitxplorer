@@ -34,7 +34,7 @@ class UserFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[UserViewModel::class.java]
 
         repo_recycler_view.layoutManager = LinearLayoutManager(requireContext())
         repo_recycler_view.adapter = repoAdapter
