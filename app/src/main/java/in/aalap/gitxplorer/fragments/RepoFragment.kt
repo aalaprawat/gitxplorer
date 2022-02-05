@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.repo_fragment.*
 
 /**
- * Repo Fragment
+ * Open Request For Display
  */
 
 class RepoFragment : Fragment() {
