@@ -8,5 +8,9 @@ data class PullRequestDataModel(
     @SerializedName("state")
     val state: String = "",
     @SerializedName("user")
-    val userDataModel: UserDataModel? = null
+    val userDataModel: UserDataModel? = null,
+    @SerializedName("created_at")
+    val createDate: String? = null,
+    @SerializedName("closed_at")
+    val closeDate: String? = null,
 )

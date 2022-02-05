@@ -69,12 +69,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="6dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/pull_status_image"
-            app:layout_constraintStart_toEndOf="@+id/pull_status_image" />
+            app:layout_constraintStart_toEndOf="@+id/pull_status_image"
+            app:layout_constraintTop_toTopOf="@+id/pull_status_image" />
+
+        <TextView
+            android:id="@+id/createdAt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/pull_status_image"
+            app:layout_constraintTop_toBottomOf="@+id/pull_status_image" />
+
+        <TextView
+            android:id="@+id/closedAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/createdAt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toEndOf="@+id/createdAt"
+            app:layout_constraintTop_toTopOf="@+id/createdAt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
