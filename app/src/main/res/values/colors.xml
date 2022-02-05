@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="backgroundlight">#0C2948</color>
     <color name="lightred">#EF9A9A</color>
+    <color name="lightgreen">#AAEF5B</color>
 </resources>

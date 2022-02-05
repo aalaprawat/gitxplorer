@@ -6,6 +6,7 @@ import `in`.aalap.gitxplorer.model.UserDataModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 import retrofit2.http.Url
 
 /**
@@ -20,6 +21,9 @@ interface Urls {
     fun getRepoList(@Path("userName") userName: String): Call<ArrayList<ReposDataModel>>
 
     @GET("")
-    fun getPullRequestForRepo(@Url repoUrl: String): Call<ArrayList<PullRequestDataModel>>
+    fun getPullRequestForRepo(
+        @Url repoUrl: String,
+        @Query("state") status: String
+    ): Call<ArrayList<PullRequestDataModel>>
 
 }
