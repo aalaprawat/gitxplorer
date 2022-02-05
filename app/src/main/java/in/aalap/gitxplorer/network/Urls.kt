@@ -8,6 +8,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Url
 
+/**
+ * This are all the urls
+ */
 
 interface Urls {
     @GET("https://api.github.com/users/{userName}")
