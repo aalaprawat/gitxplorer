@@ -2,6 +2,8 @@ package `in`.aalap.gitxplorer.adapters
 
 import `in`.aalap.gitxplorer.R
 import `in`.aalap.gitxplorer.model.PullRequestDataModel
+import `in`.aalap.gitxplorer.utils.Util
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_pull_request.view.*
+import java.util.*
 
 class PullRequestAdapter : RecyclerView.Adapter<PullRequestAdapter.PullRequestViewHolder>() {
 
@@ -39,12 +42,16 @@ class PullRequestAdapter : RecyclerView.Adapter<PullRequestAdapter.PullRequestVi
         )
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PullRequestViewHolder, position: Int) {
         val pullrequest = differ.currentList[position]
         holder.itemView.apply {
             title_repo.text = pullrequest.title
-            pull_status.text = pullrequest.state
+            pull_status.text = pullrequest.state.uppercase(Locale.getDefault())
             profile_name.text = pullrequest.userDataModel?.login
+            createdAt.text = "Created :" + Util.getDates(pullrequest.createDate ?: "")
+            closedAt.text = "Closed :" + Util.getDates(pullrequest.closeDate ?: "")
+
             Glide.with(context).load(pullrequest.userDataModel?.avatarUrl ?: "").into(profile_pic)
             if (pullrequest.state.contains("open"))
                 pull_status_image.setColorFilter(resources.getColor(android.R.color.holo_blue_light))
