@@ -4,7 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragments.RepoFragment">
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/customSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:thumb="@drawable/thumb"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:track="@drawable/track" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
@@ -19,7 +31,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/somethingwentwrong" />
+        app:lottie_rawRes="@raw/somethingwentwrong"
+        tools:visibility="gone" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationLoading"
@@ -34,19 +47,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/loading" />
+        app:lottie_rawRes="@raw/loading"
+        tools:visibility="gone" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationViewNoResult"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:background="@color/white"
         android:elevation="32dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/customSwitch"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/emptylist" />
@@ -54,11 +69,25 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pull_request_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/customSwitch" />
+
+    <TextView
+        android:id="@+id/branches_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/customSwitch"
+        app:layout_constraintStart_toEndOf="@+id/customSwitch"
+        app:layout_constraintTop_toTopOf="@+id/customSwitch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

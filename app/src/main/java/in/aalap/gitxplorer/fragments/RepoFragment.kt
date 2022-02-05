@@ -10,9 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.repo_fragment.*
-import kotlinx.android.synthetic.main.repo_fragment.animationLoading
-import kotlinx.android.synthetic.main.repo_fragment.animationView
-import kotlinx.android.synthetic.main.user_fragment.*
 
 class RepoFragment : Fragment() {
 
@@ -20,6 +17,7 @@ class RepoFragment : Fragment() {
         fun newInstance() = RepoFragment()
     }
 
+    private var repoName: String? = null
     private lateinit var viewModel: RepoViewModel
     private val adapterRepoRequest = PullRequestAdapter()
     override fun onCreateView(
@@ -35,11 +33,11 @@ class RepoFragment : Fragment() {
         pull_request_recyclerView.layoutManager = LinearLayoutManager(context)
         pull_request_recyclerView.adapter = adapterRepoRequest
 
-        val repoName = arguments?.getString("RepoName")
-        viewModel.getPullRequest(repoName ?: "")
+        repoName = arguments?.getString("RepoName")
+        branches_title.text = "Open Pull Request"
+        viewModel.getPullRequest(repoName ?: "", "open")
         viewModel.pullRequestForRepo?.observe(viewLifecycleOwner) {
             animationLoading.visibility = View.GONE
-
             if (it == null) {
                 animationView.visibility = View.VISIBLE
                 animationViewNoResult.visibility = View.GONE
@@ -52,6 +50,20 @@ class RepoFragment : Fragment() {
                     animationViewNoResult.visibility = View.GONE
                     adapterRepoRequest.differ.submitList(it)
                 }
+            }
+        }
+        setUpSwitch()
+    }
+
+    private fun setUpSwitch() {
+        customSwitch.setOnCheckedChangeListener { compoundButton, _ ->
+            animationLoading.visibility = View.VISIBLE
+            if (compoundButton.isChecked) {
+                branches_title.text = "Closed Pull Request"
+                viewModel.getPullRequest(repoName ?: "", "closed")
+            } else {
+                branches_title.text = "Open Pull Request"
+                viewModel.getPullRequest(repoName ?: "", "open")
             }
         }
     }

@@ -12,9 +12,9 @@ import retrofit2.Response
 
 class RepoViewModel : ViewModel() {
     val pullRequestForRepo: MutableLiveData<ArrayList<PullRequestDataModel>?> = MutableLiveData()
-    fun getPullRequest(repoName: String) {
+    fun getPullRequest(repoName: String, status: String) {
         viewModelScope.launch {
-            RetrofitConfig.urlService.getPullRequestForRepo(repoName)
+            RetrofitConfig.urlService.getPullRequestForRepo(repoName, status)
                 .enqueue(object : Callback<ArrayList<PullRequestDataModel>> {
                     override fun onFailure(
                         call: Call<ArrayList<PullRequestDataModel>>,
